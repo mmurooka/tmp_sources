@@ -303,7 +303,7 @@ class TvmIkSample
     // set left hand
     geometry_msgs::Pose left_hand_pose_msg;
     const Eigen::Vector3d& left_hand_pos = frame_map_["LeftHand"]->position().translation();
-    Eigen::Quaterniond left_hand_quat(frame_map_["LeftHand"]->position().rotation());
+    Eigen::Quaterniond left_hand_quat(frame_map_["LeftHand"]->position().rotation().inverse());
     left_hand_pose_msg.position.x = left_hand_pos.x();
     left_hand_pose_msg.position.y = left_hand_pos.y();
     left_hand_pose_msg.position.z = left_hand_pos.z();
@@ -338,7 +338,7 @@ class TvmIkSample
               pose_st_msg->pose.orientation.x,
               pose_st_msg->pose.orientation.y,
               pose_st_msg->pose.orientation.z
-              }.toRotationMatrix());
+              }.inverse().toRotationMatrix());
     left_hand_pos_fn_->position(
         Eigen::Vector3d{
           pose_st_msg->pose.position.x,

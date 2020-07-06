@@ -1,0 +1,18 @@
+<launch>
+  <arg name="robot_model_path" />
+  <arg name="robot_config_path" />
+
+  <rosparam command="load" file="$(arg robot_config_path)" />
+  <rosparam subst_value="true">
+    robot_model_path: $(arg robot_model_path)
+  </rosparam>
+
+    <include file="$(find tvm_samples)/launch/display_robot_moveit.launch">
+    <arg name="robot_model_path" value="$(arg robot_model_path)" />
+  </include>
+
+  <node pkg="tvm_samples" type="rviz_server.py" name="rviz_server" />
+
+  <node pkg="tvm_samples" type="TvmIkSample" name="tvm_ik_sample"
+        output="screen" />
+</launch>

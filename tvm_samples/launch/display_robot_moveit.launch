@@ -1,0 +1,19 @@
+<launch>
+  <arg name="robot_model_path" default="$(find jvrc_description)/urdf/jvrc1.urdf" />
+
+  <!-- Load robot description -->
+  <param name="robot_description" textfile="$(arg robot_model_path)" />
+
+  <arg name="root_link_frame" default="base_link"/>
+  <arg name="global_frame" default="world"/>
+
+  <!-- Setup robot visualization -->
+  <node pkg="jsk_interactive_marker" type="semantic_robot_state_generator.py"
+        name="semantic_robot_state_generator">
+    <param name="~root_link" value="$(arg root_link_frame)"/>
+    <param name="~global_frame" value="$(arg global_frame)"/>
+  </node>
+
+  <!-- Rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tvm_samples)/config/robot_moveit.rviz" />
+</launch>

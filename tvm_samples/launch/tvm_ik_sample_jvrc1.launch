@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find tvm_samples)/launch/tvm_ik_common.launch">
+    <arg name="robot_model_path" value="$(find jvrc_description)/urdf/jvrc1.urdf" />
+    <arg name="robot_config_path" value="$(find tvm_samples)/config/jvrc1_config.yaml" />
+  </include>
+</launch>

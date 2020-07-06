@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>tvm_samples</name>
+  <version>0.0.1</version>
+  <description>Samples of TVM</description>
+
+  <maintainer email="m-murooka@aist.go.jp">Masaki Murooka</maintainer>
+  <license>MIT</license>
+  <url type="website">http://wiki.ros.org/beginner_tutorials</url>
+  <author email="m-murooka@aist.go.jp">Masaki Murooka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+  <depend>moveit_msgs</depend>
+  <depend>TVM</depend>
+
+  <doc_depend>doxygen</doc_depend>
+</package>

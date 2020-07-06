@@ -1,0 +1,59 @@
+robot:
+  initial_q:
+    [
+    ["Root", [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8275]],
+    ["R_HIP_P", -0.38],
+    ["R_HIP_R", -0.01],
+    ["R_HIP_Y", 0.0],
+    ["R_KNEE", 0.72],
+    ["R_ANKLE_R", -0.01],
+    ["R_ANKLE_P", -0.33],
+    ["L_HIP_P", -0.38],
+    ["L_HIP_R", 0.02],
+    ["L_HIP_Y", 0.0],
+    ["L_KNEE", 0.72],
+    ["L_ANKLE_R", -0.02],
+    ["L_ANKLE_P", -0.33],
+    ["WAIST_Y", 0.0],
+    ["WAIST_P", 0.13],
+    ["WAIST_R", 0.00],
+    ["NECK_Y", 0.0],
+    ["NECK_R", 0.0],
+    ["NECK_P", 0.0],
+    ["R_SHOULDER_P", -0.052],
+    ["R_SHOULDER_R", -0.17],
+    ["R_SHOULDER_Y", 0.0],
+    ["R_ELBOW_P", -0.52],
+    ["R_ELBOW_Y", 0.0],
+    ["R_WRIST_R", 0.0],
+    ["R_WRIST_Y", 0.0],
+    ["R_UTHUMB", 0.0],
+    ["R_LTHUMB", 0.0],
+    ["R_UINDEX", 0.0],
+    ["R_LINDEX", 0.0],
+    ["R_ULITTLE", 0.0],
+    ["R_LLITTLE", 0.0],
+    ["L_SHOULDER_P", -0.052000],
+    ["L_SHOULDER_R", 0.17],
+    ["L_SHOULDER_Y", 0.0],
+    ["L_ELBOW_P", -0.52],
+    ["L_ELBOW_Y", 0.0],
+    ["L_WRIST_R", 0.0],
+    ["L_WRIST_Y", 0.0],
+    ["L_UTHUMB", 0.0],
+    ["L_LTHUMB", 0.0],
+    ["L_UINDEX", 0.0],
+    ["L_LINDEX", 0.0],
+    ["L_ULITTLE", 0.0],
+    ["L_LLITTLE", 0.0]
+    ]
+
+  filtered_links:
+    ["R_UTHUMB_S", "R_LTHUMB_S", "R_UINDEX_S", "R_LINDEX_S", "R_ULITTLE_S", "R_LLITTLE_S",
+    "L_UTHUMB_S", "L_LTHUMB_S", "L_UINDEX_S", "L_LINDEX_S", "L_ULITTLE_S", "L_LLITTLE_S"]
+
+frame:
+  left_foot_link: L_ANKLE_P_S
+  right_foot_link: R_ANKLE_P_S
+  left_hand_link: L_WRIST_Y_S
+  right_hand_link: R_WRIST_Y_S

@@ -199,27 +199,27 @@ class TvmIkSample
 
     // add task to problem
     pb_.add(left_foot_contact_fn == 0.,
-            tvm::task_dynamics::PD(1.),
+            tvm::task_dynamics::P(1.),
       {tvm::requirements::PriorityLevel(0)});
     pb_.add(right_foot_contact_fn == 0.,
-            tvm::task_dynamics::PD(1.),
+            tvm::task_dynamics::P(1.),
       {tvm::requirements::PriorityLevel(0)});
     pb_.add(posture_fn == 0.,
-            tvm::task_dynamics::PD(1.),
+            tvm::task_dynamics::P(1.),
       {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-4)});
     pb_.add(left_hand_ori_fn_ == 0.,
-            tvm::task_dynamics::PD(1.),
+            tvm::task_dynamics::P(1.),
       {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1.)});
     pb_.add(left_hand_pos_fn_ == 0.,
-            tvm::task_dynamics::PD(1.),
+            tvm::task_dynamics::P(1.),
       {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1.)});
     pb_.add(com_in_fn >= 0.,
-            tvm::task_dynamics::VelocityDamper(dt_, {0.005, 0.001, 0}, tvm::constant::big_number),
+            tvm::task_dynamics::VelocityDamper({0.005, 0.001, 0}, tvm::constant::big_number),
             {tvm::requirements::PriorityLevel(0)});
 
     // set bounds
     pb_.add(robot_->lQBound() <= robot_->qJoints() <= robot_->uQBound(),
-            tvm::task_dynamics::VelocityDamper(dt_, {0.01, 0.001, 0}, tvm::constant::big_number),
+            tvm::task_dynamics::VelocityDamper({0.01, 0.001, 0}, tvm::constant::big_number),
             {tvm::requirements::PriorityLevel(0)});
     // pb_.add(robot_->lTauBound() <= robot_->tau() <= robot_->uTauBound(),
     //         tvm::task_dynamics::None(),

@@ -225,6 +225,12 @@ class TvmIkSample
     // pb_.add(robot_->lTauBound() <= robot_->tau() <= robot_->uTauBound(),
     //         tvm::task_dynamics::None(),
     //         {tvm::requirements::PriorityLevel(0)});
+
+    // regularization
+    pb_.add(dot(robot_->qFreeFlyer()) == 0.,
+      {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-6)});
+    pb_.add(dot(robot_->qJoints()) == 0.,
+      {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-6)});
   }
 
   void setupRos()

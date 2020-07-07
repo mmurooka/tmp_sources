@@ -31,6 +31,7 @@
 #include <RBDyn/parsers/urdf.h>
 
 #include <RBDyn/ID.h>
+#include <RBDyn/EulerIntegration.h>
 
 #include <fstream>
 #include <iostream>
@@ -251,7 +252,13 @@ class TvmIkSample
       }
 
       // integrate
-      clock_->advance();
+      // Clock::advance is available only for the second order case (i.e. ddot(q) is variable).
+      // clock_->advance();
+      auto dq = dot(robot_->q()).value();
+      rbd::vectorToParam(dq, robot_->mbc().alpha);
+      rbd::eulerIntegration(robot_->mb(), robot_->mbc(), clock_->dt());
+      auto q = robot_->q().value();
+      rbd::paramToVector(robot_->mbc().q, q);
 
       // process ROS
       publishRobotState(*robot_);

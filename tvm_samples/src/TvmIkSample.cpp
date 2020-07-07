@@ -118,6 +118,7 @@ class TvmIkSample
     std::string right_foot_link_name;
     std::string left_hand_link_name;
     std::string right_hand_link_name;
+    std::string chest_link_name;
     if (!(nh_.hasParam("frame/left_foot_link")
           || nh_.hasParam("frame/right_foot_link")
           || nh_.hasParam("frame/left_hand_link")
@@ -128,6 +129,9 @@ class TvmIkSample
     nh_.getParam("frame/right_foot_link", right_foot_link_name);
     nh_.getParam("frame/left_hand_link", left_hand_link_name);
     nh_.getParam("frame/right_hand_link", right_hand_link_name);
+    if (nh_.hasParam("frame/chest_link")) {
+      nh_.getParam("frame/chest_link", chest_link_name);
+    }
 
     Eigen::Vector3d left_foot_offset = Eigen::Vector3d::Zero();
     if (nh_.hasParam("frame/left_foot_offset")) {
@@ -178,6 +182,15 @@ class TvmIkSample
             robot_,
             right_hand_link_name,
             sva::PTransformd{right_hand_offset}));
+    if (!chest_link_name.empty()) {
+      ROS_INFO("add a Chest frame.");
+      pushToFrameMap(
+          std::make_shared<tvm::robot::Frame>(
+              "Chest",
+              robot_,
+              chest_link_name,
+              sva::PTransformd::Identity()));
+    }
     pushToFrameMap(
         std::make_shared<tvm::robot::Frame>(
             "GroundFrame",
@@ -243,6 +256,12 @@ class TvmIkSample
     pb_.add(com_in_fn >= 0.,
             tvm::task_dynamics::VelocityDamper({0.005, 0.001, 0}, tvm::constant::big_number),
             {tvm::requirements::PriorityLevel(0)});
+    if (frame_map_.count("Chest")) {
+      auto chest_ori_fn = std::make_shared<tvm::robot::OrientationFunction>(frame_map_["Chest"]);
+      pb_.add(chest_ori_fn == 0.,
+              tvm::task_dynamics::P(1.),
+        {tvm::requirements::PriorityLevel(1), tvm::requirements::AnisotropicWeight(Eigen::Vector3d(1e-2,1e-2,1e-6))});
+    }
 
     // set bounds
     pb_.add(robot_->lQBound() <= robot_->qJoints() <= robot_->uQBound(),

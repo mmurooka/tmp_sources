@@ -440,6 +440,25 @@ Visualization Manager:
       Topic: /robot_pose_array
       Unreliable: false
       Value: true
+    - Align Bottom: false
+      Background Alpha: 0.800000012
+      Background Color: 0; 0; 0
+      Class: jsk_rviz_plugin/OverlayText
+      Enabled: true
+      Foreground Alpha: 0.800000012
+      Foreground Color: 25; 255; 240
+      Name: TaskStateText
+      Overtake Color Properties: false
+      Overtake Position Properties: false
+      Topic: /task_text
+      Value: true
+      font: DejaVu Sans Mono
+      height: 128
+      left: 0
+      line width: 2
+      text size: 24
+      top: 0
+      width: 100
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
@@ -472,18 +491,18 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.134204835
-        Y: 0.206270188
-        Z: 0.820182502
+        X: -0.142725393
+        Y: 0.202943921
+        Z: 0.838396251
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.330400586
+      Pitch: 0.555401206
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.19718729
+      Yaw: 5.8653698
     Saved: ~
 Window Geometry:
   Displays:

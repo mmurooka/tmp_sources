@@ -8,12 +8,13 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   roslib
   moveit_msgs
+  jsk_rviz_plugins
   )
 
 find_package(TVM REQUIRED)
 
 catkin_package(
-  CATKIN_DEPENDS roscpp roslib moveit_msgs
+  CATKIN_DEPENDS roscpp roslib moveit_msgs jsk_rviz_plugins
   DEPENDS
   )
 

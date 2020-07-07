@@ -14,6 +14,7 @@
   <depend>roscpp</depend>
   <depend>roslib</depend>
   <depend>moveit_msgs</depend>
+  <depend>jsk_rviz_plugins</depend>
   <depend>TVM</depend>
 
   <doc_depend>doxygen</doc_depend>

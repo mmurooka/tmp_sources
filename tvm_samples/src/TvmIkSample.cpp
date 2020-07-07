@@ -43,6 +43,7 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/Transform.h>
 #include <moveit_msgs/DisplayRobotState.h>
+#include <jsk_rviz_plugins/OverlayText.h>
 
 
 class TvmIkSample
@@ -282,6 +283,7 @@ class TvmIkSample
   {
     robot_state_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("display_robot_state", 1);
     pose_arr_pub_ = nh_.advertise<geometry_msgs::PoseArray>("robot_pose_array", 1);
+    text_pub_ = nh_.advertise<jsk_rviz_plugins::OverlayText>("task_text", 1);
 
     pose_sub_ = nh_.subscribe("interactive_marker_pose", 1, &TvmIkSample::poseCallback, this);
   }
@@ -314,6 +316,7 @@ class TvmIkSample
       // process ROS
       publishRobotState(*robot_);
       publishPose(*robot_);
+      publishTaskState();
       ros::spinOnce();
       // rate.sleep();
     }
@@ -387,6 +390,39 @@ class TvmIkSample
     pose_arr_pub_.publish(pose_arr_msg);
   }
 
+  void publishTaskState()
+  {
+    double ori_err = left_hand_ori_fn_->value().norm();
+    double pos_err = left_hand_pos_fn_->value().norm();
+    double thre = 1e-3;
+
+    jsk_rviz_plugins::OverlayText text_msg;
+    std_msgs::ColorRGBA color;
+    if ((ori_err < thre) && (pos_err < thre)) {
+      color.r = 0.3568627450980392;
+      color.g = 0.7529411764705882;
+      color.b = 0.8705882352941177;
+      color.a = 1.0;
+    } else {
+      color.r = 0.8509803921568627;
+      color.g = 0.3254901960784314;
+      color.b = 0.30980392156862746;
+      color.a = 1.0;
+    }
+    text_msg.text =
+        "pos err: " + std::to_string(pos_err) + "\nori error: " + std::to_string(ori_err);
+    text_msg.width = 1000;
+    text_msg.height = 1000;
+    text_msg.top = 10;
+    text_msg.left = 10;
+    text_msg.bg_color.a = 0.0;
+    text_msg.fg_color = color;
+    text_msg.text_size = 24;
+
+    // publish
+    text_pub_.publish(text_msg);
+  }
+
   void poseCallback(const geometry_msgs::PoseStamped::ConstPtr& pose_st_msg)
   {
     // update target
@@ -449,6 +485,7 @@ class TvmIkSample
   ros::NodeHandle nh_;
   ros::Publisher robot_state_pub_;
   ros::Publisher pose_arr_pub_;
+  ros::Publisher text_pub_;
   ros::Subscriber pose_sub_;
 };
 

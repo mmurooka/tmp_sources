@@ -128,30 +128,56 @@ class TvmIkSample
     nh_.getParam("frame/right_foot_link", right_foot_link_name);
     nh_.getParam("frame/left_hand_link", left_hand_link_name);
     nh_.getParam("frame/right_hand_link", right_hand_link_name);
+
+    Eigen::Vector3d left_foot_offset = Eigen::Vector3d::Zero();
+    if (nh_.hasParam("frame/left_foot_offset")) {
+      std::vector<double> left_foot_offset_vec;
+      nh_.getParam("frame/left_foot_offset", left_foot_offset_vec);
+      left_foot_offset = Eigen::Vector3d(left_foot_offset_vec.data());
+    }
+    Eigen::Vector3d right_foot_offset = Eigen::Vector3d::Zero();
+    if (nh_.hasParam("frame/right_foot_offset")) {
+      std::vector<double> right_foot_offset_vec;
+      nh_.getParam("frame/right_foot_offset", right_foot_offset_vec);
+      right_foot_offset = Eigen::Vector3d(right_foot_offset_vec.data());
+    }
+    Eigen::Vector3d left_hand_offset = Eigen::Vector3d::Zero();
+    if (nh_.hasParam("frame/left_hand_offset")) {
+      std::vector<double> left_hand_offset_vec;
+      nh_.getParam("frame/left_hand_offset", left_hand_offset_vec);
+      left_hand_offset = Eigen::Vector3d(left_hand_offset_vec.data());
+    }
+    Eigen::Vector3d right_hand_offset = Eigen::Vector3d::Zero();
+    if (nh_.hasParam("frame/right_hand_offset")) {
+      std::vector<double> right_hand_offset_vec;
+      nh_.getParam("frame/right_hand_offset", right_hand_offset_vec);
+      right_hand_offset = Eigen::Vector3d(right_hand_offset_vec.data());
+    }
+
     pushToFrameMap(
         std::make_shared<tvm::robot::Frame>(
             "LeftFootFrame",
             robot_,
             left_foot_link_name,
-            sva::PTransformd{Eigen::Vector3d(0, 0, -0.102)}));
+            sva::PTransformd{left_foot_offset}));
     pushToFrameMap(
         std::make_shared<tvm::robot::Frame>(
             "RightFootFrame",
             robot_,
             right_foot_link_name,
-            sva::PTransformd{Eigen::Vector3d(0, 0, -0.102)}));
+            sva::PTransformd{right_foot_offset}));
     pushToFrameMap(
         std::make_shared<tvm::robot::Frame>(
             "LeftHand",
             robot_,
             left_hand_link_name,
-            sva::PTransformd{Eigen::Vector3d(0, 0, -0.104)}));
+            sva::PTransformd{left_hand_offset}));
     pushToFrameMap(
         std::make_shared<tvm::robot::Frame>(
             "RightHand",
             robot_,
             right_hand_link_name,
-            sva::PTransformd{Eigen::Vector3d(0, 0, -0.104)}));
+            sva::PTransformd{right_hand_offset}));
     pushToFrameMap(
         std::make_shared<tvm::robot::Frame>(
             "GroundFrame",
@@ -164,19 +190,19 @@ class TvmIkSample
         "LeftFootGround",
         std::make_shared<tvm::robot::Contact>(
             frame_map_["LeftFootFrame"], frame_map_["GroundFrame"], std::vector<sva::PTransformd>{
-              {Eigen::Vector3d(0.1093074306845665, -0.06831501424312592, 0.)},
-              {Eigen::Vector3d(0.10640743374824524, 0.06836499273777008, 0.)},
-              {Eigen::Vector3d(-0.10778241604566574, 0.06897497922182083, 0.)},
-              {Eigen::Vector3d(-0.1079324409365654, -0.069024957716465, 0.)}
+              {Eigen::Vector3d(0.1, -0.07, 0.)},
+              {Eigen::Vector3d(0.1, 0.07, 0.)},
+              {Eigen::Vector3d(-0.1, 0.07, 0.)},
+              {Eigen::Vector3d(-0.1, -0.07, 0.)}
             })) ;
     pushToContactMap(
         "RightFootGround",
         std::make_shared<tvm::robot::Contact>(
             frame_map_["RightFootFrame"], frame_map_["GroundFrame"], std::vector<sva::PTransformd>{
-              {Eigen::Vector3d(-0.1079324409365654, 0.069024957716465, 0.)},
-              {Eigen::Vector3d(-0.10778241604566574, -0.06897497922182083, 0.)},
-              {Eigen::Vector3d(0.10640743374824524, -0.06836499273777008, 0.)},
-              {Eigen::Vector3d(0.1093074306845665, 0.06831501424312592, 0.)}
+              {Eigen::Vector3d(-0.1, 0.07, 0.)},
+              {Eigen::Vector3d(-0.1, -0.07, 0.)},
+              {Eigen::Vector3d(0.1, -0.07, 0.)},
+              {Eigen::Vector3d(0.1, 0.07, 0.)}
             }));
   }
 

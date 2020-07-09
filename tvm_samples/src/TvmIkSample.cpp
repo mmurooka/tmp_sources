@@ -272,6 +272,13 @@ class TvmIkSample
     }
 
     // set bounds
+    // the bound task for qFreeFlyer cause the following exception:
+    // terminate called after throwing an instance of 'std::runtime_error'
+    //   what():  We allow linear function only on Euclidean variables.
+    // pushToTaskMap("FreeFlyerBoundTask",
+    //               pb_.add(-1. <= robot_->qFreeFlyer() <= 1.,
+    //                       tvm::task_dynamics::VelocityDamper({0.01, 0.001, 0}, tvm::constant::big_number),
+    //                       {tvm::requirements::PriorityLevel(0)}));
     pushToTaskMap("JointsBoundTask",
                   pb_.add(robot_->lQBound() <= robot_->qJoints() <= robot_->uQBound(),
                           tvm::task_dynamics::VelocityDamper({0.01, 0.001, 0}, tvm::constant::big_number),

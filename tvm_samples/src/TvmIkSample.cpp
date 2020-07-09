@@ -239,44 +239,54 @@ class TvmIkSample
     left_hand_pos_fn_ = std::make_shared<tvm::robot::PositionFunction>(frame_map_["LeftHand"]);
 
     // add task to problem
-    pb_.add(left_foot_contact_fn == 0.,
-            tvm::task_dynamics::P(1.),
-      {tvm::requirements::PriorityLevel(0)});
-    pb_.add(right_foot_contact_fn == 0.,
-            tvm::task_dynamics::P(1.),
-      {tvm::requirements::PriorityLevel(0)});
-    pb_.add(posture_fn == 0.,
-            tvm::task_dynamics::P(1.),
-      {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-4)});
-    pb_.add(left_hand_ori_fn_ == 0.,
-            tvm::task_dynamics::P(1.),
-      {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1.)});
-    pb_.add(left_hand_pos_fn_ == 0.,
-            tvm::task_dynamics::P(1.),
-      {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1.)});
-    pb_.add(com_in_fn >= 0.,
-            tvm::task_dynamics::VelocityDamper({0.005, 0.001, 0}, tvm::constant::big_number),
-            {tvm::requirements::PriorityLevel(0)});
+    pushToTaskMap("LeftFootContactTask",
+                  pb_.add(left_foot_contact_fn == 0.,
+                          tvm::task_dynamics::P(1.),
+                          {tvm::requirements::PriorityLevel(0)}));
+    pushToTaskMap("RightFootContactTask",
+                  pb_.add(right_foot_contact_fn == 0.,
+                          tvm::task_dynamics::P(1.),
+                          {tvm::requirements::PriorityLevel(0)}));
+    pushToTaskMap("PostureTask",
+                  pb_.add(posture_fn == 0.,
+                          tvm::task_dynamics::P(1.),
+                          {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-4)}));
+    pushToTaskMap("LeftHandOriTask",
+                  pb_.add(left_hand_ori_fn_ == 0.,
+                          tvm::task_dynamics::P(1.),
+                          {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1.)}));
+    pushToTaskMap("LeftHandPosTask",
+                  pb_.add(left_hand_pos_fn_ == 0.,
+                          tvm::task_dynamics::P(1.),
+                          {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1.)}));
+    pushToTaskMap("ComInTask",
+                  pb_.add(com_in_fn >= 0.,
+                          tvm::task_dynamics::VelocityDamper({0.005, 0.001, 0}, tvm::constant::big_number),
+                          {tvm::requirements::PriorityLevel(0)}));
     if (frame_map_.count("Chest")) {
       auto chest_ori_fn = std::make_shared<tvm::robot::OrientationFunction>(frame_map_["Chest"]);
-      pb_.add(chest_ori_fn == 0.,
-              tvm::task_dynamics::P(1.),
-        {tvm::requirements::PriorityLevel(1), tvm::requirements::AnisotropicWeight(Eigen::Vector3d(1e-2,1e-2,1e-6))});
+      pushToTaskMap("ChestOriTask",
+                    pb_.add(chest_ori_fn == 0.,
+                            tvm::task_dynamics::P(1.),
+                            {tvm::requirements::PriorityLevel(1), tvm::requirements::AnisotropicWeight(Eigen::Vector3d(1e-2,1e-2,1e-6))}));
     }
 
     // set bounds
-    pb_.add(robot_->lQBound() <= robot_->qJoints() <= robot_->uQBound(),
-            tvm::task_dynamics::VelocityDamper({0.01, 0.001, 0}, tvm::constant::big_number),
-            {tvm::requirements::PriorityLevel(0)});
+    pushToTaskMap("JointsBoundTask",
+                  pb_.add(robot_->lQBound() <= robot_->qJoints() <= robot_->uQBound(),
+                          tvm::task_dynamics::VelocityDamper({0.01, 0.001, 0}, tvm::constant::big_number),
+                          {tvm::requirements::PriorityLevel(0)}));
     // pb_.add(robot_->lTauBound() <= robot_->tau() <= robot_->uTauBound(),
     //         tvm::task_dynamics::None(),
     //         {tvm::requirements::PriorityLevel(0)});
 
     // regularization
-    pb_.add(dot(robot_->qFreeFlyer()) == 0.,
-      {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-6)});
-    pb_.add(dot(robot_->qJoints()) == 0.,
-      {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-6)});
+    pushToTaskMap("FreeFlyerVelTask",
+                  pb_.add(dot(robot_->qFreeFlyer()) == 0.,
+                          {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-6)}));
+    pushToTaskMap("JointsVelTask",
+                  pb_.add(dot(robot_->qJoints()) == 0.,
+                          {tvm::requirements::PriorityLevel(1), tvm::requirements::Weight(1e-6)}));
   }
 
   void setupRos()
@@ -451,6 +461,12 @@ class TvmIkSample
     contact_map_[name] = contact;
   }
 
+  void pushToTaskMap(const std::string& name,
+                     const std::shared_ptr<tvm::TaskWithRequirements>& task)
+  {
+    task_map_[name] = task;
+  }
+
   // Build a cube as a set of planes from a given origin and size
   std::vector<tvm::geometry::PlanePtr> makeCube(const Eigen::Vector3d & origin,
                                                 double x_size,
@@ -478,6 +494,7 @@ class TvmIkSample
 
   std::map<std::string, std::shared_ptr<tvm::robot::Frame> > frame_map_;
   std::map<std::string, std::shared_ptr<tvm::robot::Contact> > contact_map_;
+  std::map<std::string, std::shared_ptr<tvm::TaskWithRequirements> > task_map_;
 
   std::shared_ptr<tvm::robot::OrientationFunction> left_hand_ori_fn_;
   std::shared_ptr<tvm::robot::PositionFunction> left_hand_pos_fn_;

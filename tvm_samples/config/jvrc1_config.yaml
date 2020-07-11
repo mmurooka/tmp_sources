@@ -1,3 +1,10 @@
+posture_gen:
+  dt: 1.0
+  publish_in_loop: true
+  sleep_duration_in_loop: -1 # [sec] (negative value for no sleep)
+  ori_thre: deg(1) # [rad]
+  pos_thre: 1e-3 # [m]
+
 robot:
   initial_q:
     [
@@ -52,8 +59,12 @@ robot:
     ["R_UTHUMB_S", "R_LTHUMB_S", "R_UINDEX_S", "R_LINDEX_S", "R_ULITTLE_S", "R_LLITTLE_S",
     "L_UTHUMB_S", "L_LTHUMB_S", "L_UINDEX_S", "L_LINDEX_S", "L_ULITTLE_S", "L_LLITTLE_S"]
 
-frame:
-  left_foot_link: L_ANKLE_P_S
-  right_foot_link: R_ANKLE_P_S
-  left_hand_link: L_WRIST_Y_S
-  right_hand_link: R_WRIST_Y_S
+  frames:
+    - name: LeftFootFrame
+      link: L_ANKLE_P_S
+    - name: RightFootFrame
+      link: R_ANKLE_P_S
+    - name: LeftHandFrame
+      link: L_WRIST_Y_S
+    - name: RightHandFrame
+      link: R_WRIST_Y_S

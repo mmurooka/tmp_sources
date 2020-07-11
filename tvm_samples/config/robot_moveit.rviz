@@ -25,6 +25,8 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: ""
+Preferences:
+  PromptSaveOnExit: true
 Toolbars:
   toolButtonStyle: 2
 Visualization Manager:
@@ -70,301 +72,230 @@ Visualization Manager:
       Enabled: true
       Links:
         All Links Enabled: true
-        Body:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        CAMERA_C:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        CAMERA_LH:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        CAMERA_R:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        CAMERA_RH:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        CAMERA_X:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        Chest_Link0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Chest_Link1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Chest_Link2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
-        Head_Link0:
+        L_ANKLE_P_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Head_Link1_Plan2:
+        L_ANKLE_R_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        L_ELBOW_P_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Larm_Link0:
+        L_ELBOW_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Larm_Link1:
+        L_HIP_P_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        L_HIP_R_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Larm_Link2:
+        L_HIP_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Larm_Link3:
+        L_KNEE_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Larm_Link4:
+        L_LINDEX_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Larm_Link5:
+        L_LLITTLE_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Larm_Link6:
+        L_LTHUMB_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lhand_Link0_Plan2:
+        L_SHOULDER_P_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lindex_Link0:
+        L_SHOULDER_R_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        L_SHOULDER_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lindex_Link1:
+        L_UINDEX_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lindex_Link2:
+        L_ULITTLE_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_UTHUMB_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_WRIST_R_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        L_WRIST_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         Link Tree Style: Links in Alphabetic Order
-        Lleg_Link0:
+        NECK_P_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lleg_Link1:
+        NECK_R_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        NECK_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lleg_Link2:
+        PELVIS_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lleg_Link3:
+        R_ANKLE_P_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lleg_Link4:
+        R_ANKLE_R_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        R_ELBOW_P_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lleg_Link5:
+        R_ELBOW_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lmiddle_Link0:
+        R_HIP_P_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        R_HIP_R_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lmiddle_Link1:
+        R_HIP_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lmiddle_Link2:
+        R_KNEE_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lscap_Link0:
+        R_LINDEX_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lthumb_Link0:
+        R_LLITTLE_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lthumb_Link1:
+        R_LTHUMB_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Lthumb_Link2:
+        R_SHOULDER_P_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Rarm_Link0:
+        R_SHOULDER_R_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        R_SHOULDER_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Rarm_Link1:
+        R_UINDEX_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Rarm_Link2:
+        R_ULITTLE_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Rarm_Link3:
+        R_UTHUMB_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Rarm_Link4:
+        R_WRIST_R_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        R_WRIST_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Rarm_Link5:
+        WAIST_P_S:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        WAIST_R_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Rarm_Link6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rhand_Link0_Plan2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rindex_Link0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rindex_Link1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rindex_Link2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rleg_Link0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rleg_Link1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rleg_Link2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rleg_Link3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rleg_Link4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rleg_Link5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rmiddle_Link0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rmiddle_Link1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rmiddle_Link2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rscap_Link0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rthumb_Link0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rthumb_Link1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Rthumb_Link2:
+        WAIST_Y_S:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        dcamera:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -376,11 +307,39 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        l_ankle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        l_wrist:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lcamera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         lfsensor:
           Alpha: 1
           Show Axes: false
           Show Trail: false
         lhsensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        r_ankle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        r_wrist:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        ranger:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rcamera:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -395,7 +354,7 @@ Visualization Manager:
       Name: RobotState
       Robot Alpha: 0.800000012
       Robot Description: robot_description
-      Robot State Topic: display_robot_state
+      Robot State Topic: /posture_gen/display_robot_state
       Show All Links: true
       Show Highlights: true
       Value: true
@@ -437,7 +396,7 @@ Visualization Manager:
       Shaft Length: 0.230000004
       Shaft Radius: 0.00999999978
       Shape: Axes
-      Topic: /robot_pose_array
+      Topic: /posture_gen/pose_array
       Unreliable: false
       Value: true
     - Align Bottom: false
@@ -450,7 +409,7 @@ Visualization Manager:
       Name: TaskStateText
       Overtake Color Properties: false
       Overtake Position Properties: false
-      Topic: /task_text
+      Topic: /posture_gen/task_text
       Value: true
       font: DejaVu Sans Mono
       height: 128
@@ -474,7 +433,10 @@ Visualization Manager:
     - Class: rviz/FocusCamera
     - Class: rviz/Measure
     - Class: rviz/SetInitialPose
+      Theta std deviation: 0.261799395
       Topic: /initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
     - Class: rviz/SetGoal
       Topic: /move_base_simple/goal
     - Class: rviz/PublishPoint
@@ -499,10 +461,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.555401206
+      Pitch: 0.315401435
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.8653698
+      Yaw: 5.1703701
     Saved: ~
 Window Geometry:
   Displays:

@@ -22,6 +22,29 @@ Add the following line to ~/.bashrc.
 source ~/ros/ws_tvm/devel/setup.bash
 ```
 
+### use C++17 for TVM in Ubuntu16.04
+https://qiita.com/forno/items/11c4a0f8169d987f232b
+
+1. install g++
+```
+$ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+$ sudo apt update
+$ sudo apt install -y g++-9
+$ echo "export CXX='g++-9'" >> ~/.bashrc
+$ echo "export CC='gcc-9'" >> ~/.bashrc
+$ g++-9 --version # check
+```
+
+2. install cmake
+```
+$ git clone https://gitlab.kitware.com/cmake/cmake.git
+$ cd cmake
+$ ./bootstrap
+$ make -j5
+$ sudo make install
+$ cmake --version # check
+```
+
 ## Samples
 
 ### Interactive IK

@@ -9,13 +9,15 @@ DebugConfig::DebugConfig(mc_rbdyn::RobotModulePtr rm, double dt, const mc_rtc::C
   mc_rtc::log::info("defaultConfig: {}", defaultConfig.dump(true));
 
   mc_rtc::log::info("## Setup customConfig1 ##");
-  mc_rtc::Configuration customConfig1 = defaultConfig;
+  mc_rtc::Configuration customConfig1;
+  customConfig1.load(defaultConfig);
   customConfig1.load(config("sample")("custom1"));
   mc_rtc::log::info("defaultConfig: {}", defaultConfig.dump(true));
   mc_rtc::log::info("customConfig1: {}", customConfig1.dump(true));
 
   mc_rtc::log::info("## Setup customConfig2 ##");
-  mc_rtc::Configuration customConfig2 = defaultConfig;
+  mc_rtc::Configuration customConfig2;
+  customConfig2.load(defaultConfig);
   customConfig2.load(config("sample")("custom2"));
   mc_rtc::log::info("defaultConfig: {}", defaultConfig.dump(true));
   mc_rtc::log::info("customConfig2: {}", customConfig2.dump(true));

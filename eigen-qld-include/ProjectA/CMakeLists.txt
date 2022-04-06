@@ -7,7 +7,7 @@ add_library(ProjectA SHARED src/ProjectA.cpp)
 target_include_directories(ProjectA PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_link_libraries(ProjectA PUBLIC eigen-qld::eigen-qld)
+target_link_libraries(ProjectA PRIVATE eigen-qld::eigen-qld)
 
 install(TARGETS ProjectA
   EXPORT ProjectAConfig

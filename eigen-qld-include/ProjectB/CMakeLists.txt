@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 project(ProjectB)
 
-find_package(eigen-qld REQUIRED) # Is it possible to skip this???
+# find_package(eigen-qld REQUIRED) # Is it possible to skip this???
 find_package(ProjectA REQUIRED)
 
 add_library(ProjectB SHARED src/ProjectB.cpp)

@@ -2,11 +2,13 @@
 
 #include <ProjectA/ProjectA.h>
 
+#include <eigen-qld/QLD.h>
+
 using namespace ProjectA;
 
 void funcA()
 {
-  Eigen::QLDDirect qld;
+  ClassA classA;
 
   std::cout << "Defined in ProjectA.cpp" << std::endl;
 }

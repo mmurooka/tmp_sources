@@ -57,7 +57,7 @@ class LogAnimationGraph(object):
         if "xlabel" in kwargs:
             ax.set_xlabel(kwargs["xlabel"])
         if "ylabel" in kwargs:
-            ax.set_xlabel(kwargs["ylabel"], labelpad=-2)
+            ax.set_ylabel(kwargs["ylabel"], labelpad=-2)
         if "ylim" in kwargs:
             ax.set_ylim(kwargs["ylim"])
 
@@ -107,34 +107,33 @@ if __name__ == "__main__":
     log_animation_graph.run(
         output_filename,
         [{"key": "CentroidalManager_ZMP_ref_y",
-          "kwargs": {"label": "desired Y",
+          "kwargs": {"label": "ref ZMP",
                      "linewidth": 4.0,
                      "color": "blue"}},
          {"key": "CentroidalManager_ZMP_control_y",
-          "kwargs": {"label": "desired X",
+          "kwargs": {"label": "desired ZMP",
                      "linewidth": 4.0,
                      "color": "green"}},
          {"key": "CentroidalManager_ZMP_measured_y",
-          "kwargs": {"label": "desired Y",
+          "kwargs": {"label": "measured ZMP",
                      "linewidth": 4.0,
                      "color": "red"}},
          {"key": "CentroidalManager_CoM_controlRobot_y",
-          "kwargs": {"label": "desired Z",
+          "kwargs": {"label": "control robot CoM",
                      "linestyle": "--",
                      "linewidth": 4.0,
                      "color": "green"}},
          {"key": "CentroidalManager_CoM_realRobot_y",
-          "kwargs": {"label": "actual X",
+          "kwargs": {"label": "real robot CoM",
                      "linestyle": "--",
                      "linewidth": 4.0,
                      "color": "red"}},
          {"key": "CentroidalManager_ZMP_SupportRegion_max_y",
-          "kwargs": {"label": "actual Y",
+          "kwargs": {"label": "support region",
                      "linewidth": 2.0,
                      "color": "black"}},
          {"key": "CentroidalManager_ZMP_SupportRegion_min_y",
-          "kwargs": {"label": "actual Z",
-                     "linewidth": 2.0,
+          "kwargs": {"linewidth": 2.0,
                      "color": "black"}}
         ],
         title="JVRC1 walking",

@@ -111,7 +111,7 @@ int main() {
           std::move(e), std::move(C), std::move(D));
     };
     const vector_t umin = (vector_t(INPUT_DIM) << -1.0).finished();
-    const vector_t umax = (vector_t(INPUT_DIM) << 0.7).finished();
+    const vector_t umax = (vector_t(INPUT_DIM) << 0.9).finished();
     problem.inequalityConstraintPtr->add("ubound",
                                          getInputBoxConstraint(umin, umax));
   }
@@ -143,16 +143,17 @@ int main() {
   }
 
   // Set reference
-  std::shared_ptr<ReferenceManager> referenceManagerPtr;
   {
+    std::shared_ptr<ReferenceManager> referenceManagerPtr;
     const vector_t x = vector_t::Zero(2);
     const vector_t u = vector_t::Zero(1);
     TargetTrajectories targetTrajectories({0.0}, {x}, {u});
     referenceManagerPtr =
         std::make_shared<ReferenceManager>(std::move(targetTrajectories));
+    solver->setReferenceManager(referenceManagerPtr);
   }
-  solver->setReferenceManager(referenceManagerPtr);
 
+  // Setup loop
   double simDt = 0.005;
   double horizonDuration = 4.0;
 
@@ -166,6 +167,7 @@ int main() {
   std::ofstream ofs(filePath);
   ofs << "time x[0] x[1] u[0]" << std::endl;
 
+  // Control loop
   while (currentTime < 10.0) {
     // Solve MPC
     double finalTime = currentTime + horizonDuration;

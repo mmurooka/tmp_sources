@@ -1,0 +1,18 @@
+<package format="2">
+  <name>ocs2_ipm_sample</name>
+  <version>0.1.0</version>
+  <description>
+    Simple sample of ocs2_ipm
+  </description>
+  <maintainer email="m-murooka@aist.go.jp">Masaki Murooka</maintainer>
+  <license>BSD</license>
+
+  <url>http://ros.org/wiki/ocs2_ipm_sample</url>
+  <author>Masaki Murooka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>ocs2_ipm</depend>
+
+  <build_depend>eigen</build_depend>
+</package>

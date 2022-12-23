@@ -122,7 +122,7 @@ int main() {
     const auto settings = []() {
       ipm::Settings s;
       s.dt = 0.01;
-      s.ipmIteration = 10;
+      s.ipmIteration = 1;
       // s.useFeedbackPolicy = true;
       // s.printSolverStatistics = true;
       // s.printSolverStatus = true;
@@ -131,7 +131,7 @@ int main() {
       // s.printSolverStatus = true;
       // s.printLinesearch = true;
       s.nThreads = 1;
-      s.initialBarrierParameter = 1.0e-02;
+      s.initialBarrierParameter = 1.0e-04;
       s.targetBarrierParameter = 1.0e-04;
       s.barrierLinearDecreaseFactor = 0.2;
       s.barrierSuperlinearDecreasePower = 1.5;

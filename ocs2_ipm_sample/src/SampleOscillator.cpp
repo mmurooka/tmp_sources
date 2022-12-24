@@ -133,8 +133,6 @@ int main() {
       s.nThreads = 1;
       s.initialBarrierParameter = 1.0e-04;
       s.targetBarrierParameter = 1.0e-04;
-      s.barrierLinearDecreaseFactor = 0.2;
-      s.barrierSuperlinearDecreasePower = 1.5;
       s.fractionToBoundaryMargin = 0.995;
       return s;
     }();

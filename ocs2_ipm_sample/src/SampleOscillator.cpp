@@ -127,9 +127,6 @@ int main() {
       // s.printSolverStatistics = true;
       // s.printSolverStatus = true;
       // s.printLinesearch = true;
-      // s.printSolverStatistics = true;
-      // s.printSolverStatus = true;
-      // s.printLinesearch = true;
       s.nThreads = 1;
       s.initialBarrierParameter = 1.0e-04;
       s.targetBarrierParameter = 1.0e-04;

@@ -1,1 +1,8 @@
----
+robots:
+  jvrc1:
+    frames:
+      - name: RightElbowFrame
+        parent: R_ELBOW_P_S
+        X_p_f:
+          translation: [-0.05975397769348206, 2.9864303419113725e-08, -0.0720193897773116]
+          rotation: [-9.207800642973047e-08, 1.4917202070221256, 1.0772996667969959e-07]

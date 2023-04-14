@@ -15,4 +15,5 @@ struct FrameVisualizationController_DLLAPI FrameVisualizationController : public
 protected:
   std::string visualizeFrameName_ = "";
   std::vector<std::string> frameNameList_;
+  sva::PTransformd framePoseWithOffset_ = sva::PTransformd::Identity();
 };

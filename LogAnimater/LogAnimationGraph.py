@@ -27,8 +27,8 @@ class LogAnimationGraph(object):
             self.start_time = self.log["t"][0]
         if self.end_time is None:
             self.end_time = self.log["t"][-1]
-        self.start_idx = (self.log["t"] >= start_time).argmax()
-        self.end_idx = (self.log["t"] >= end_time).argmax()
+        self.start_idx = (self.log["t"] >= self.start_time).argmax()
+        self.end_idx = (self.log["t"] >= self.end_time).argmax()
 
         self.dt = self.log["t"][1] - self.log["t"][0]
         self.skip_num = int(1. / (self.dt * hz))

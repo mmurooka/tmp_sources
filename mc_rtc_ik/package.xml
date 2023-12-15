@@ -1,0 +1,19 @@
+<package format="2">
+  <name>mc_rtc_ik</name>
+  <version>0.1.0</version>
+  <description>
+    IK sample based on mc_rtc
+  </description>
+  <maintainer email="m-murooka@aist.go.jp">Masaki Murooka</maintainer>
+  <license>BSD</license>
+
+  <url>http://ros.org/wiki/mc_rtc_ik</url>
+  <author>Masaki Murooka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>eigen_conversions</depend>
+  <depend>optmotiongen_msgs</depend>
+  <depend>optmotiongen_rviz_plugins</depend>
+</package>

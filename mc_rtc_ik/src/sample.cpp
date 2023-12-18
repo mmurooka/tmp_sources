@@ -111,7 +111,7 @@ int main(int argc, char **argv)
       const sva::PTransformd & pose = mbc.bodyPosW[mb.successor(0)];
       geometry_msgs::Pose & poseMsg = robotStateMsg.root_pose.pose;
       tf::pointEigenToMsg(pose.translation(), poseMsg.position);
-      tf::quaternionEigenToMsg(Eigen::Quaterniond(pose.rotation()).normalized(), poseMsg.orientation);
+      tf::quaternionEigenToMsg(Eigen::Quaterniond(pose.rotation()).normalized().inverse(), poseMsg.orientation);
 
       // Publish
       optmotiongen_msgs::RobotStateArray robotStateArrMsg;

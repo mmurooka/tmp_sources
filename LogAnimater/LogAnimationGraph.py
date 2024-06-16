@@ -49,7 +49,7 @@ class LogAnimationGraph(object):
             ylim (list): Y range
         """
         fig, ax = plt.subplots()
-        fig.canvas.set_window_title("LogAnimationGraph")
+        fig.canvas.manager.set_window_title("LogAnimationGraph")
         fig.set_size_inches((20.0, 6.0))
         if "title" in kwargs:
             ax.set_title(kwargs["title"])

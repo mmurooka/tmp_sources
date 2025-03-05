@@ -2,7 +2,7 @@ import h5py
 import os
 import sys
 
-def compress_hdf5(input_file, output_file, compression="gzip", compression_opts=9):
+def compress_hdf5(input_file, output_file, compression="gzip", compression_opts=4):
     """
     HDF5ファイルを指定の圧縮アルゴリズムで圧縮し、属性を保持する。
     
